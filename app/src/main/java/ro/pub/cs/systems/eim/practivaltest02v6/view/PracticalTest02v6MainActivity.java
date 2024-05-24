@@ -21,7 +21,7 @@ import ro.pub.cs.systems.eim.practivaltest02v6.network.ServerThread;
 
 public class PracticalTest02v6MainActivity extends AppCompatActivity {
     TextView serverResponseView;
-    EditText server_port, client_port, client_address, client_option, client_city;
+    EditText server_port, client_port, client_option, client_city;
     Button connect_to_server, get_weather;
 
     private ServerThread serverThread = null;
@@ -82,10 +82,8 @@ public class PracticalTest02v6MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            String clientAddress = client_address.getText().toString();
             String clientPort = client_port.getText().toString();
-
-            if (clientAddress == null || clientAddress.isEmpty() || clientPort == null || clientPort.isEmpty()) {
+            if (clientPort == null || clientPort.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "[MAIN ACTIVITY] Client connection parameters should be filled!", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -95,11 +93,9 @@ public class PracticalTest02v6MainActivity extends AppCompatActivity {
                 return;
             }
 
-            String city = client_city.getText().toString();
             String informationType = client_option.getText().toString();
 
-            if (city == null || city.isEmpty()
-                    || informationType == null || informationType.isEmpty()) {
+            if (informationType == null || informationType.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "[MAIN ACTIVITY] Parameters from client (city / information type) should be filled", Toast.LENGTH_SHORT).show();
                 return;
             }

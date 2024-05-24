@@ -37,9 +37,11 @@ public class ValutaModel {
         return  usd;
     }
     public boolean CanUseCache() {
-        long secondsApart = Math.abs(ChronoUnit.SECONDS.between(cacheTime, LocalTime.now()));
-//        return secondsApart < 10;
-        Log.i(Constants.TAG, "[MODEL ] " + secondsApart);
+        if (cacheTime != null) {
+            long secondsApart = Math.abs(ChronoUnit.SECONDS.between(cacheTime, LocalTime.now()));
+            return secondsApart < 10;
+        }
+
         return false;
     }
 }
